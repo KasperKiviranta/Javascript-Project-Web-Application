@@ -8,7 +8,7 @@ async function getWeather() {
     }
 
     try {
-        // 1. Get latitude & longitude from city name (Open-Meteo Geocoding API)
+        // 1. Get latitude & longitude from city name
         const geoResponse = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}`);
         const geoData = await geoResponse.json();
 
@@ -27,7 +27,7 @@ async function getWeather() {
 
         const { temperature, windspeed } = weatherData.current_weather;
 
-        // 3. Display results
+        // 3. Show results
         resultDiv.innerHTML = `
             <p><strong>${name}, ${country}</strong></p>
             <p>🌡 Temperature: ${temperature}°C</p>
