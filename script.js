@@ -26,12 +26,13 @@ async function getWeather() {
         const weatherData = await weatherResponse.json();
 
         const { temperature, windspeed } = weatherData.current_weather;
+        const windSpeedMs = (windspeed / 3.6).toFixed(1);
 
         // 3. Show results
         resultDiv.innerHTML = `
             <p><strong>${name}, ${country}</strong></p>
             <p>🌡 Temperature: ${temperature}°C</p>
-            <p>💨 Wind Speed: ${windspeed} km/h</p>
+            <p>💨 Wind Speed: ${windSpeedMs} m/s</p>
         `;
     } catch (error) {
         resultDiv.innerHTML = "Error fetching data.";
